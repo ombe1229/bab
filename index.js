@@ -8,17 +8,11 @@ let month = today.getMonth() + 1
 let date = today.getDate()
 const MLSV_YMD = String(year)+String(month)+String(date)
 
-const params = new URLSearchParams()
-params.append('KEY', KEY)
-params.append('Type', 'json')
-params.append('ATPT_OFCDC_SC_CODE', ATPT_OFCDC_SC_CODE)
-params.append('SD_SCHUL_CODE', SD_SCHUL_CODE)
-
 const myHeaders = new Headers()
 myHeaders.append('Content-Type', 'json')
 
-const url = `https://open.neis.go.kr/hub/mealServiceDietInfo`
-const init = {method: 'GET', headers: myHeaders, body: params}
+const url = `https://open.neis.go.kr/hub/mealServiceDietInfo?KEY=${KEY}&Type=json&ATPT_OFCDC_SC_CODE=${ATPT_OFCDC_SC_CODE}&SD_SCHUL_CODE=${SD_SCHUL_CODE}`   
+const init = {method: 'GET', headers: myHeaders}
 
 const request = new Request(url, init)
 const response = await request.loadJSON()
