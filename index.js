@@ -2,16 +2,13 @@ const KEY = ''
 const ATPT_OFCDC_SC_CODE = 'J10'
 const SD_SCHUL_CODE = '7530119'
 
-const today = new Date()
-let year = today.getFullYear()
-let month = today.getMonth() + 1
-let date = today.getDate()
-const MLSV_YMD = String(year)+String(month)+String(date)
+const date = new Date(+new Date() + 3240 * 10000)
+const MLSV_YMD = date.toISOString().substring(0, 10).replaceAll("-", "")
 
-const myHeaders = {"Content-Type": "json"}
+const myHeaders = { "Content-Type": "json" }
 
-const url = `https://open.neis.go.kr/hub/mealServiceDietInfo?KEY=${KEY}&Type=json&ATPT_OFCDC_SC_CODE=${ATPT_OFCDC_SC_CODE}&SD_SCHUL_CODE=${SD_SCHUL_CODE}`   
-const init = {method: 'GET', headers: myHeaders}
+const url = `https://open.neis.go.kr/hub/mealServiceDietInfo?KEY=${KEY}&Type=json&ATPT_OFCDC_SC_CODE=${ATPT_OFCDC_SC_CODE}&SD_SCHUL_CODE=${SD_SCHUL_CODE}&MLSV_YMD=${MLSV_YMD}`
+const init = { method: 'GET', headers: myHeaders }
 
 const request = new Request(url, init)
 const response = await request.loadJSON()
