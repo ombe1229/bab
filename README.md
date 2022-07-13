@@ -1,3 +1,3 @@
 # bab
 
-> 응애밥줘
+> 급식정보 scriptable 스크립트
